@@ -189,7 +189,7 @@
   --shadow-subtle: 0 2px 4px oklch(0.25 0.012 190 / 0.025);
 }
 
-body { font-family: var(--font-sans); font-size: 14px; letter-spacing: 0; }
+body { font-family: var(--font-sans), "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji"; font-size: 14px; letter-spacing: 0; }
 h1,h2,h3,h4 { font-family: var(--font-display); letter-spacing: 0; }
 button,a,input,textarea { -webkit-tap-highlight-color: transparent; }
 .app-shell { display: grid; grid-template-columns: 224px minmax(0, 1fr); min-height: 100vh; }

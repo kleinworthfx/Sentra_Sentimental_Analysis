@@ -72,7 +72,8 @@ export function createDemo(): Analysis[] {
     const date = new Date();
     date.setDate(date.getDate() - (29 - Math.floor(i / 4)));
     date.setHours(9 + i % 9, i % 60, 0, 0);
-    return analyzeText(samples[i % samples.length] ?? 'Good service', ['Product reviews', 'Customer feedback', 'Social media'][i % 3], date.toISOString());
+    const sampleIndex = (i * 7 + Math.floor(i / 4) * 3 + Math.floor(i / 11)) % samples.length;
+    return analyzeText(samples[sampleIndex] ?? 'Good service', ['Product reviews', 'Customer feedback', 'Social media'][i % 3], date.toISOString());
   }).reverse();
 }
 export function summarize(rows: Analysis[]) {
