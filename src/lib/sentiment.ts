@@ -72,7 +72,7 @@ export function createDemo(): Analysis[] {
     const date = new Date();
     date.setDate(date.getDate() - (29 - Math.floor(i / 4)));
     date.setHours(9 + i % 9, i % 60, 0, 0);
-    return analyzeText(samples[i % samples.length] ?? samples[0], ['Product reviews', 'Customer feedback', 'Social media'][i % 3], date.toISOString());
+    return analyzeText(samples[i % samples.length] ?? 'Good service', ['Product reviews', 'Customer feedback', 'Social media'][i % 3], date.toISOString());
   }).reverse();
 }
 export function summarize(rows: Analysis[]) {
@@ -82,7 +82,7 @@ export function summarize(rows: Analysis[]) {
 }
 export function parseCsv(text: string) {
   const result = Papa.parse<Record<string, string>>(text, { header: true, skipEmptyLines: 'greedy', transformHeader: h => h.replace(/^\uFEFF/, '').trim() });
-  if (result.errors.some(error => error.type === 'Quotes' || error.type === 'Delimiter')) throw new Error('Could not read this CSV. Please check the file format.');
+  if (result.errors.some(error => error.type === 'Quotes')) throw new Error('Could not read this CSV. Please check the file format.');
   const fields = result.meta.fields ?? [];
   if (!fields.length || !result.data.length) throw new Error('The file needs a header row and at least one text entry.');
   if (result.data.length > 2000) throw new Error('Please upload up to 2,000 rows per file.');

@@ -16,5 +16,5 @@ describe('English sentiment requirements', () => {
   it('rejects Telugu', () => expect(() => analyzeText('చాలా బాగుంది')).toThrow('English only'));
   it('rejects a non-English Latin-script greeting', () => expect(() => analyzeText('bonjour merci')).toThrow('English only'));
   it('rejects blank input', () => expect(() => analyzeText('  ')).toThrow());
-  it('reads quoted CSV text with commas', () => expect(parseCsv('text\n"Good, excellent!"').rows[0].text).toBe('Good, excellent!'));
+  it('reads quoted CSV text with commas', () => expect(parseCsv('text\n"Good, excellent!"').rows[0]?.['text']).toBe('Good, excellent!'));
 });
