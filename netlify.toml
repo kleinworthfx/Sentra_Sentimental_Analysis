@@ -1,0 +1,9 @@
+# Netlify deployment settings (see docs.lovable.dev/tips-tricks/self-hosting)
+# Nitro auto-detects Netlify during the build and emits the server handler
+# alongside the static assets, so no SPA fallback redirects are needed.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
